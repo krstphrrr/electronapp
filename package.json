@@ -1,0 +1,18 @@
+{
+  "name": "electronapp",
+  "version": "1.0.0",
+  "description": "dimaingest",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.1.3"
+  },
+  "dependencies": {
+    "electron-pug": "^2.0.0",
+    "pug": "^2.0.4"
+  }
+}

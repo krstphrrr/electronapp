@@ -1,0 +1,14 @@
+extends layout 
+
+block content
+	div#main
+		form(onsubmit="handleSubmit(this); return false;")
+			div.mdl-grid
+				div.mdl-cell.mdl-cell--12-col(style="{justify-content:left}")
+					p 1. Setting a header table
+				div.mdl-cell.mdl-cell--6-col
+					button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#setbtn Set header						
+				div.mdl-cell.mdl-cell--6-col
+					button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect Check new header
+				div.mdl-cell.mdl-cell--6-col
+					input.mdl-textfield__input#textout
