@@ -1,10 +1,15 @@
 //views/layout.pug
+//- block basetag
+//- 	-var base = '.'
 html
 	head
+		//- base(href='#{base}')
 		meta(charset="UTF-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
-		link(rel="stylesheet", href="./mdl/material.min.css")
-		script(src ="./mdl/material.min.js")
+		//- link(rel="stylesheet", href="./assets/css/material.min.css")
+		link(rel="stylesheet", href="asset://css/material.min.css")
+		//- script(src ="./assets/css/material.min.js")
+		script(src ="asset://css/material.min.js")
 	body
 		block content
-	script(src="../index.js")
+	script(src="asset://index.js")

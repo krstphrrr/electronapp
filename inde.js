@@ -6,6 +6,25 @@ const {dialog} = require('electron').remote;
 // const $portInput = document.getElementById('port');
 // const $textOut = document.getElementById('textout')
 
+// document.getElementById('setbtn').addEventListener('click',()=>{
+//     showDirectorySelector()
+// })
+
+// function showDirectorySelector() {
+//     var options = {
+//         title: "Select Directory",
+//         properties: ['openDirectory'],
+//     }
+//     dialog.showOpenDialog(mainWindow, options, directorySelectorCallback);
+// }
+
+// function directorySelectorCallback(filenames) {
+//     if (filenames && filenames.length > 0) {
+//         mainWindow.webContents.send('project-directory-selected', filenames[0]);
+//     }
+// }
+
+
 // function openFileDialog(){
 //     dialog.showOpenDialog({properties: ['openDirectory', 'createDirectory']}, function(filePaths){
 //         if (filePaths){
