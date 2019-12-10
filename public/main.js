@@ -12,6 +12,8 @@ const setupPug = require('electron-pug')
 let win;
 app.mainWindow = win;
 
+const basedir = app.getPath('home')
+console.log(basedir)
 const name = app.name
 const template = [{
     label: name,
@@ -50,9 +52,9 @@ const initApp = async function(){
             nodeIntegration:true
         }
     })
-    mainWindow.loadURL('../views/index.pug')
+    mainWindow.loadURL(path.join(path.dirname(__dirname),'/views/index.pug'))
 
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     mainWindow.on('closed', ()=> {
         mainWindow=null
@@ -67,7 +69,9 @@ ipcMain.on('open-file-dialog',(event)=>{
     // }
 })
 
-
+// ipcMain.on('stringsignal', (event,data)=>{
+//     console.log(data)
+// })
 
 
 app.on('ready', initApp)

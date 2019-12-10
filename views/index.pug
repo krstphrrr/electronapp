@@ -1,14 +1,21 @@
 extends layout 
 
 block content
+	//- div#progressBar.mdl-progress.mdl-js-progress.mdl-progress__indeterminate(style="{display:none}")
 	div#main
-		form(onsubmit="handleSubmit(this); return false;")
-			div.mdl-grid
-				div.mdl-cell.mdl-cell--12-col(style="{justify-content:left}")
-					p 1. Setting a header table
-				div.mdl-cell.mdl-cell--6-col
-					button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#setbtn Set header						
-				div.mdl-cell.mdl-cell--6-col
-					button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect Check new header
-				div.mdl-cell.mdl-cell--6-col
-					input.mdl-textfield__input#textout
+		div.mdl-grid
+			div.mdl-cell.mdl-cell--12-col(style="{justify-content:left}")
+				p 1. Setting a header table
+			div.mdl-cell.mdl-cell--6-col
+				button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#setbtn(onclick="get_str()") Add face				
+			div.mdl-cell.mdl-cell--6-col
+				button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#getbtn(onclick="no_str()") Remove Face
+			div.mdl-cell.mdl-cell--6-col
+				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					input.mdl-textfield__input#textin(name="textin", type="text")
+					label.mdl-textfield__label(for="textin") Input			
+			div.mdl-cell.mdl-cell--6-col
+				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					span#textout
+					label.mdl-textfield__label#outlabel(for="textout") Output
+			
