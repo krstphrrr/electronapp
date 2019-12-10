@@ -11,4 +11,11 @@ block content
 				div.mdl-cell.mdl-cell--6-col
 					button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect Check new header
 				div.mdl-cell.mdl-cell--6-col
-					input.mdl-textfield__input#textout
+					div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-dirty.is-upgraded(data-upgraded=",MaterialTextfield")
+						input.mdl-textfield__input(id="directory", onclick="openFileDialog()", type="upload", name="directory")
+						label.mdl-textfield__label(for="directory") Output
+					//- script(type="text/javascript").
+					//- 	const {ipcRenderer} = require('electron')
+					//- 	ipcRenderer.send('fileData',(event,data)=>{
+					//- 		document.getElementById("textout").value = data
+					//- 	})
