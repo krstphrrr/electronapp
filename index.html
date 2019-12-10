@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
-</html>
+<html class="mdl-js"><head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../electronapp/views/mdl/material.min.css">
+  <script src="../electronapp/views/mdl/material.min.js"></script>
+</head>
+<body>
+  <div id="progressBar" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%; display: none"></div>
+  <div id="main">
+    <form onsubmit="handleSubmit(this); return false;">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="upload" id="directory" name="directory" onclick="openFileDialog()">
+              <label class="mdl-textfield__label" for="directory">Output</label>
+            </div>
+          </div>
+      </div>
+    </form>
+  </div>
+
+<script src="dist/bundle.js"></script>
+</body></html>
