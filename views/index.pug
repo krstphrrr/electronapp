@@ -5,17 +5,19 @@ block content
 	div#main
 		div.mdl-grid
 			div.mdl-cell.mdl-cell--12-col(style="{justify-content:left}")
-				p 1. Setting a header table
+				p 1. So which dima doyawant?
 			div.mdl-cell.mdl-cell--6-col
-				button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#setbtn(onclick="get_str()") Add face				
-			div.mdl-cell.mdl-cell--6-col
-				button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#getbtn(onclick="no_str()") Remove Face
-			div.mdl-cell.mdl-cell--6-col
-				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					input.mdl-textfield__input#textin(name="textin", type="text")
-					label.mdl-textfield__label(for="textin") Input			
+				button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#setbtn(onclick="get_dimapath()") Choose directory				
 			div.mdl-cell.mdl-cell--6-col
 				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 					span#textout
 					label.mdl-textfield__label#outlabel(for="textout") Output
+			//- div.mdl-cell.mdl-cell--6-col
+			//- 	div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+			//- 		input.mdl-textfield__input#textin(name="textin", type="text")
+			//- 		label.mdl-textfield__label(for="textin") Input			
+			//- div.mdl-cell.mdl-cell--6-col
+			//- 	div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+			//- 		span#textout
+			//- 		label.mdl-textfield__label#outlabel(for="textout") Output
 			
