@@ -47,26 +47,23 @@ const initApp = async function(){
 
     let mainWindow = new BrowserWindow({
         width:860, 
-        height:580,
+        height:275,
+        resizable: false,
         webPreferences:{
             nodeIntegration:true
         }
     })
     mainWindow.loadURL(path.join(path.dirname(__dirname),'/views/index.pug'))
 
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     mainWindow.on('closed', ()=> {
         mainWindow=null
     })
 }
 
-ipcMain.on('open-file-dialog',(event)=>{
-    // console.log('before dialog')
-    dialog.showOpenDialog({properties: ['openDirectory']},files=>event.sender.send('selected-directory', files))
-    // if (str) {
-    //     event.sender.send('selected-directory', str)
-    // }
+ipcMain.on('processenv',(event)=>{
+    console.log(process.env.pyPATH)
 })
 
 // ipcMain.on('stringsignal', (event,data)=>{

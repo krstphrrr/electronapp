@@ -5,17 +5,27 @@ block content
 	div#main
 		div.mdl-grid
 			div.mdl-cell.mdl-cell--12-col(style="{justify-content:left}")
-				p 1. Setting a header table
-			div.mdl-cell.mdl-cell--6-col
-				button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#setbtn(onclick="get_str()") Add face				
-			div.mdl-cell.mdl-cell--6-col
-				button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect#getbtn(onclick="no_str()") Remove Face
-			div.mdl-cell.mdl-cell--6-col
-				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					input.mdl-textfield__input#textin(name="textin", type="text")
-					label.mdl-textfield__label(for="textin") Input			
-			div.mdl-cell.mdl-cell--6-col
+				p 1. So which DIMA doyawant?
+			div.mdl-cell.mdl-cell--3-col
+				button#setbtn.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect Choose!			
+			div.mdl-cell.mdl-cell--9-col
 				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 					span#textout
-					label.mdl-textfield__label#outlabel(for="textout") Output
+					label.mdl-textfield__label#outlabel(for="textout") 1st Output
+			div.mdl-cell.mdl-cell--3-col
+				button#popbtn.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect drop tables
+			div.mdl-cell.mdl-cell--9-col
+				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					span#textout2
+					label.mdl-textfield__label#outlabel2(for="textout2") 2nd Output
+			//- div.mdl-cell.mdl-cell--6-col
+			//- 	div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+			//- 		input.mdl-textfield__input#textin(name="textin", type="text")
+			//- 		label.mdl-textfield__label(for="textin") Input			
+			//- div.mdl-cell.mdl-cell--6-col
+			//- 	div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+			//- 		span#textout
+			//- 		label.mdl-textfield__label#outlabel(for="textout") Output
+		
+		
 			

@@ -2,31 +2,74 @@
 
 const {dialog} = require('electron').remote;
 const {ipcRenderer} = require('electron')
-const getbtn = document.getElementById('getbtn')
+const {app, BrowserWindow} = require('electron').remote
+const path = require('path')
+const setupPug = require('electron-pug')
+const popbtn = document.getElementById('popbtn')
 const setbtn = document.getElementById('setbtn')
-const py = require('python-shell')
+const pypath = process.env.pyPATH
 
+let variable = ''
 
-// setbtn.addEventListener('click', (event)=>{
-//     ipcRenderer.send('open-file-dialog')
-// })
+setbtn.addEventListener('click', (event)=>{
+    ipcRenderer.send("processenv")
+ 
+    document.getElementById('textout2').innerHTML=''
+    variable = dialog.showOpenDialogSync({properties: ['openFile']})
+    document.getElementById('textout').innerHTML = variable
 
-// setbtn.addEventListener('click',(event)=>{
-//     client.invoke("echo", "h", (err,res)=>{
-//         if(err){
-//             //
-//         } else{
-//             document.getElementById('selected-file').innerHTML = res
-//         }
-//     })
-// })
+    if (variable===undefined){
+        document.getElementById('outlabel').style.display = "none";
+        document.getElementById('outlabel2').style.display = "none";
+        document.getElementById('textout2').innerHTML= 'no file chosen'
+        
+    } else {
+        get_dimapath();
+    }
+})
 
-// ipcRenderer.on('stringsignal',(event,data)=>{
-//     document.getElementById('selected-file').value = data
-// })
+function get_dimapath(){
+    const {PythonShell} = require('python-shell')
+    const {dialog} = require('electron').remote;
+    const path = require("path")
 
-// getbtn.addEventListener('click', (event)=>{
-//     document.getElementById('selected-file').innerHTML = dialog.showOpenDialogSync({properties: ['openDirectory', 'createDirectory']})
-// })
+    const options = {
+        scriptPath: './scripts/',
+        pythonPath: pypath,
+        args: [variable]
+    }
+    let pyshell = new PythonShell('test_pk.py',options)
 
+    pyshell.on('message', (message)=>{
+        document.getElementById('textout2').innerHTML = message
+    }) 
 
+    document.getElementById('outlabel').style.display = "none";
+    document.getElementById('outlabel2').style.display = "none";
+
+}
+
+popbtn.addEventListener('click', (event)=>{
+    document.getElementById('textout1').innerHTML=''
+    document.getElementById('textout2').innerHTML=''
+    drop_tables()
+})
+function drop_tables(){
+    const {PythonShell} = require('python-shell')
+    const {dialog} = require('electron').remote;
+    const path = require("path")
+
+    const options = {
+        scriptPath: './scripts/',
+        pythonPath: pypath,
+        args: [variable]
+    }
+    let pyshell = new PythonShell('dropper.py',options)
+
+    pyshell.on('message', (message)=>{
+        document.getElementById('textout2').innerHTML = message
+    }) 
+
+    document.getElementById('outlabel').style.display = "none";
+    document.getElementById('outlabel2').style.display = "none";
+}
