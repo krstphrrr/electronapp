@@ -336,7 +336,7 @@ def pk_add(tablename,dimapath):
     3. reckey pipe
     4. pipe if its none of the above: only BSNE implemented
     """
-    plot = None
+    # plot = None
 
 
     plotkeylist = ['tblPlots','tblLines','tblQualHeader','tblSoilStabHeader',
@@ -404,7 +404,7 @@ def pk_add(tablename,dimapath):
             linekeytable = arc.MakeTableView(f'{tablename}',dimapath)
             linekeytable_pk = lin.merge(linekeytable, left_on=lin.LineKey2, right_on=linekeytable.LineKey)
             linekeytable_pk.drop('LineKey2', axis=1, inplace=True)
-            linekeytabler_pk = linekeytable_pk.copy(deep=True)
+            linekeytable_pk = linekeytable_pk.copy(deep=True)
             linekeytable_pk.drop('key_0', axis=1, inplace=True)
             # mdb[f'{tablename}'] = linekeytable_pk
             return linekeytable_pk
