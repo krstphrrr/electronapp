@@ -1,19 +1,8 @@
 import pandas as pd
 from os import listdir,getcwd, chdir
 from os.path import normpath, join
-from methods.make_table import Table
-from utils import Acc
-
-
-"""
- replacing ap's gdb methods with pandas alternatives
- - if ap creates a temporary view in gdb, arcno creates dataframe within its
-   temp class attribute
- - if ap selects certain columns from temp view, arcno selects certain columns
-   from df and returns them
- - if ap counts rows of temp view filtered with select, arcno counts rows of
-   dataframe filtered through if statement dependent on a methods argument
-"""
+from scripts.methods.make_table import Table
+from scripts.utils import Acc
 
 
 class arcno():

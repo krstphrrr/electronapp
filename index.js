@@ -2,6 +2,12 @@
 
 const {dialog} = require('electron').remote;
 const {ipcRenderer} = require('electron')
+const {app, BrowserWindow} = require('electron').remote
+const path = require('path')
+const setupPug = require('electron-pug')
+const popbtn = document.getElementById('popbtn')
+// const outputtext = document.getElementById('textout2')
+// let vartxt = ""
 // const getbtn = document.getElementById('getbtn')
 // const setbtn = document.getElementById('setbtn')
 // const py = require('python-shell')
@@ -61,3 +67,28 @@ function get_dimapath(){
     document.getElementById('outlabel2').style.display = "none";
 
 }
+
+
+// popbtn.addEventListener('click', (event)=>{
+//     // ipcRenderer.send('stringsignal')
+//     const modalPath = path.join(path.dirname(__dirname),'/public/pop.html')
+//   let win = new BrowserWindow({ frame: false })
+
+//   win.on('close', () => { win = null })
+//   win.loadURL(modalPath)
+//   win.show()
+// //   document.getElementById('poptext').innerHTML = "jmmm"
+// })
+
+// function pop_text(){
+//     // document.getElementById('poptext').innerHTML = document.getElementById('textout').textContent
+//     ipcRenderer.send('popsignal',variable)
+    
+// }
+// function pop_out(){
+//     document.getElementById('poptext').innerHTML = ""
+// }
+
+// ipcRenderer.on('asynchronous-reply', (event,arg)=>{
+//     document.getElementById('poptext').innerHTML = message
+// })

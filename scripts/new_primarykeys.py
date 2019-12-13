@@ -1,8 +1,8 @@
-from arcnah import arcno
+from scripts.arcnah import arcno
 from os.path import normpath, split, splitext, join
-from utils import db
+from scripts.utils import db
 from sqlalchemy import create_engine
-from utils import sql_str, config
+from scripts.utils import sql_str, config
 from datetime import datetime
 from psycopg2 import sql
 import pandas as pd

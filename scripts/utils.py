@@ -22,7 +22,7 @@ class Acc:
 
 
 
-def config(filename='database.ini', section='dima'):
+def config(filename='scripts/database.ini', section='dima'):
     """
     Uses the configpaser module to read .ini and return a dictionary of
     credentials

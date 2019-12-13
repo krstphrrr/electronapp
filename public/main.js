@@ -61,12 +61,9 @@ const initApp = async function(){
     })
 }
 
-ipcMain.on('open-file-dialog',(event)=>{
-    // console.log('before dialog')
-    dialog.showOpenDialog({properties: ['openDirectory']},files=>event.sender.send('selected-directory', files))
-    // if (str) {
-    //     event.sender.send('selected-directory', str)
-    // }
+ipcMain.on('popsignal',(event, arg)=>{
+    event.sender.send('asynchronous-reply', message)
+    console.log(message)
 })
 
 // ipcMain.on('stringsignal', (event,data)=>{

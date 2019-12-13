@@ -1,7 +1,7 @@
 # from dataf import df
 from os import listdir,getcwd, chdir
 from os.path import normpath, join
-from utils import Acc
+from scripts.utils import Acc
 import pandas as pd
 
 class Table:
