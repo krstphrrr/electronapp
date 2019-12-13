@@ -7,6 +7,7 @@ const path = require('path')
 const setupPug = require('electron-pug')
 const popbtn = document.getElementById('popbtn')
 const setbtn = document.getElementById('setbtn')
+const pypath = process.env.pyPATH
 
 let variable = ''
 
@@ -34,7 +35,7 @@ function get_dimapath(){
 
     const options = {
         scriptPath: './scripts/',
-        pythonPath: 'C:\\Users\\kbonefont\\AppData\\Local\\Continuum\\miniconda3\\python.exe',
+        pythonPath: pypath,
         args: [variable]
     }
     let pyshell = new PythonShell('test_pk.py',options)
@@ -60,7 +61,7 @@ function drop_tables(){
 
     const options = {
         scriptPath: './scripts/',
-        pythonPath: 'C:\\Users\\kbonefont\\AppData\\Local\\Continuum\\miniconda3\\python.exe',
+        pythonPath: pypath,
         args: [variable]
     }
     let pyshell = new PythonShell('dropper.py',options)

@@ -1,8 +1,6 @@
 import sys
 from os.path import normpath, split, splitext, join, basename, isdir
 from os import getcwd
-from scripts.arcnah import arcno
-from scripts.new_primarykeys import pk_add, gap_pk, pg_send, drop_one, bsne_pk
 from datetime import datetime
 import pandas as pd
 

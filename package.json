@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "dimaingest",
   "main": "public/main.js",
+  "homepage": "./",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
+    "dist": "electron-builder"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +21,8 @@
     "electron-pug": "^2.0.0",
     "pug": "^2.0.4",
     "python-shell": "^1.0.8"
+  },
+  "build": {
+    "appId": "com.electron.electronapp"
   }
 }
