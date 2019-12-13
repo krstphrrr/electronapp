@@ -162,7 +162,7 @@ class arcno():
         self.newfield = newfield
         self.fields = fields
 
-        self.in_df[f'{self.newfield}'] = self.in_df[[f'{field}' for field in self.fields]].sum(axis=1)
+        self.in_df[f'{self.newfield}'] = (self.in_df[[f'{field}' for field in self.fields]].astype('object')).sum(axis=1)
         return self.in_df
 
 
@@ -305,6 +305,7 @@ def plantden_pk(dimapath):
     return plot_pk
 
 def bsne_pk(dimapath):
+    arc = arcno()
     ddt = arc.MakeTableView("tblBSNE_TrapCollection",dimapath)
     if ddt.shape[0]>0:
         ddt = arc.MakeTableView("tblBSNE_TrapCollection",dimapath)
@@ -611,7 +612,7 @@ def pg_send(tablename, dimapath):
 
         # adds dateloaded and db key to dataframe
         df['DateLoadedInDB']= datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-        if dimapath.find('calibration')!=-1:
+        if (dimapath.find('calibration')!=-1) or (dimapath.find('Calibration')!=-1):
 
             df['DBKey']=join('calibration_',split(splitext(dimapath.replace('Calibration','').replace('calibration',''))[0])[1].replace(" ",""))
             df['DBKey']=split(splitext(dimapath)[0])[1].replace(" ","")
@@ -717,6 +718,7 @@ class db:
     str= tmpconstr.getconn()
 
     def __init__(self):
+        params = config()
 
         self._conn = connect(**params)
         self._cur= self._conn.cursor()
@@ -766,19 +768,11 @@ class Table:
 
     def temp(self):
         return self.temp
-# #
-# path = r"C:\Users\kbonefont\Desktop\Some_data\calibration_GJ_Calibration_DIMA_5172018_5.1.mdb"
-# # arc = arcno()
-# # arc.MakeTableView('tblGapHeader', path)
-# pg_send('tblLines',path)
-#
-# gap_pk(path)
-#
-# pk_add('tblLines',path)
+
 try:
     for table in maintablelist:
         pg_send(f'{table}',str)
-        print(f'dima "{splitext(basename(str))[0]}" was uploaded!')
+    print(f'dima "{splitext(basename(str))[0]}" was uploaded!')
     # print(config())
 except Exception as e:
     print(e)

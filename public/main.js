@@ -54,7 +54,7 @@ const initApp = async function(){
     })
     mainWindow.loadURL(path.join(path.dirname(__dirname),'/views/index.pug'))
 
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     mainWindow.on('closed', ()=> {
         mainWindow=null
