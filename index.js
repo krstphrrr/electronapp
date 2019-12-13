@@ -57,7 +57,7 @@ function get_dimapath(){
         pythonPath: 'C:\\Users\\kbonefont\\AppData\\Local\\Continuum\\miniconda3\\python.exe',
         args: [variable]
     }
-    let pyshell = new PythonShell('dimatest.py',options)
+    let pyshell = new PythonShell('test_pk.py',options)
 
     pyshell.on('message', (message)=>{
         document.getElementById('textout2').innerHTML = message
