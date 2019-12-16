@@ -5,8 +5,7 @@ const {app, ipcMain, dialog, Menu, BrowserWindow} = require('electron')
 
 const url = require('url')
 const path = require('path')
-// const {app, BrowserWindow} = require('electron')
-// const locals = {/* ...*/}
+
 const setupPug = require('electron-pug')
 
 let win;
@@ -48,27 +47,23 @@ const initApp = async function(){
     let mainWindow = new BrowserWindow({
         width:860, 
         height:275,
-        resizable: false,
+        resizable: true,
         webPreferences:{
             nodeIntegration:true
         }
     })
     mainWindow.loadURL(path.join(path.dirname(__dirname),'/views/index.pug'))
 
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     mainWindow.on('closed', ()=> {
         mainWindow=null
     })
 }
 
-ipcMain.on('processenv',(event)=>{
-    console.log(process.env.pyPATH)
+ipcMain.on('stuffdone1',(event, output)=>{
+    console.log(`${output}`)
 })
-
-// ipcMain.on('stringsignal', (event,data)=>{
-//     console.log(data)
-// })
 
 
 app.on('ready', initApp)

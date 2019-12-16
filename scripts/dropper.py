@@ -96,11 +96,12 @@ def drop_one(table):
 
     except Exception as e:
         print(e)
-try:
-    for table in maintablelist:
-        drop_one(table)
-    for table in newtables:
-        drop_one(table)
-    print("dropped tables in postgres")
-except Exception as e:
-    print(e)
+# try:
+#     for table in maintablelist:
+#         drop_one(table)
+#     for table in newtables:
+#         drop_one(table)
+#     print("dropped tables in postgres")
+# except Exception as e:
+#     print(e)
+print("OK")

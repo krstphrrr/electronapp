@@ -8,8 +8,8 @@ from sqlalchemy import create_engine
 from datetime import datetime
 
 """
-loop successfully adds all columns to chosen tables, and ingests it.
-if table already exists, it appends it to existing table in db.
+py script loaded by electron that adds all the tables in maintablelist into
+postgresdb after adding a custom PrimaryKey, DBKey, and dateloadedindb fields
 """
 
 maintablelist = ['tblPlots',
@@ -116,7 +116,6 @@ class arcno():
         arc = arcno()
         arc.AddJoin('dataframe_x', 'dataframe_y', 'field_a')
         """
-        # self.temp_table = None
         d={}
         self.right_on = None
         self.left_on = None
@@ -215,46 +214,6 @@ def lpi_pk(dimapath):
     plot_pk = arc.CalculateField(plot_line_det, "PrimaryKey", "PlotKey", "FormDate")
 
     return plot_pk
-
-
-
-
-# a=arc.MakeTableView('tblGapDetail', path)
-# b=arc.MakeTableView('tblGapHeader', path)
-#
-# c=arc.MakeTableView('tblLines',path)
-# d=arc.MakeTableView('tblPlots',path)
-#
-# e=arc.AddJoin(c,d, 'PlotKey', 'PlotKey')
-# f = arc.AddJoin(a,b, 'RecKey')
-# g.
-# g = arc.AddJoin(e,f, 'LineKey', 'LineKey')
-
-
-# self.in_df = in_df
-# self.newfield = newfield
-# self.fields = fields
-#
-# self.in_df[f'{self.newfield}'] = (self.in_df[[f'{field}' for field in self.fields]].astype(str)).sum(axis=1)
-#
-# def fun1(dataframe, name, fields*):
-#     pass
-#
-# g2 = arc.CalculateField(g,"PrimaryKey","PlotKey","FormDate")
-#
-#
-# listd = ['a','b']
-# df = pd.DataFrame(
-# {'a':['one','two'],
-# 'b':['three','four']
-# })
-#
-# df[['a']]
-# df['newfield']=df[[f'{i}'for i in listd]].sum(axis=1)
-#
-#
-
-
 
 def gap_pk(dimapath):
     # tables

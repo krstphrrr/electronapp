@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
     body {
       font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
       color: #fff;
@@ -27,4 +27,68 @@
     </style>
     <script src="../index.js"></script>
     <h5 id="poptext"></h5>
-    <a id="close" href="javascript:window.close()", onmouseover="pop_text()", onmouseout="pop_out()">Close this Window</a>
+    <a id="close" href="javascript:window.close()", onmouseover="pop_text()", onmouseout="pop_out()">Close this Window</a> -->
+
+<html>
+  <!-- <script src="../scripts/invwin.js"> -->
+    <script type="text/javascript">
+      const ipc = require('electron').ipcRenderer
+      const BrowserWindow = require('electron').remote.BrowserWindow
+      let variable = ''
+
+      // setTimeout(()=>{
+      // document.getElementById('poptext').innerHTML = "X"
+      // ipc.send('test')
+      // },5000)
+
+    // const ipc = require('electron').ipcRenderer
+      
+
+  //   
+
+    ipc.on('dostuff', function(event, fromWindowId){
+      // setTimeout(()=>{
+      // document.getElementById('poptext').innerHTML = "X"
+      // // ipc.send('test')
+      // },5000)
+      let result = drop_tables()
+      const fromWindow = BrowserWindow.fromId(fromWindowId)
+      fromWindow.webContents.send('stuffdone',result)
+      document.getElementById('poptext').innerHTML = `${result}`
+
+      // window.close()
+      // ipc.send('pop')
+      // drop_tables()
+    })
+    function drop_tables(){
+      const {PythonShell} = require('python-shell')
+      const path = require("path")
+
+      const options = {
+          scriptPath: './scripts/',
+          pythonPath: 'C:\\Users\\kbonefont\\AppData\\Local\\Continuum\\miniconda3\\python.exe',
+          args: [variable]
+      }
+      let pyshell = new PythonShell('dropper.py',options)
+
+      const py = pyshell.on('message', (message)=>{
+        ipc.send('pop', message)
+      })
+      // CASI FUMCIONA, DEBUG EL ERROR ESE DE OBJECT OBJECT
+      return `${py}`
+          // document.getElementById('textout2').innerHTML = message
+     
+    } 
+
+      
+
+    // function test1(){
+    //   const msg = "secret"
+    //   return msg
+    // }
+  // }
+  
+// separate 
+  </script>
+  <h5 id="poptext">k</h5>
+</html>
