@@ -61,9 +61,9 @@ const initApp = async function(){
     })
 }
 
-ipcMain.on('stuffdone1',(event, output)=>{
-    console.log(`${output}`)
-})
+// ipcMain.on('stuffdone',(event, output)=>{
+//     console.log(`${output}`)
+// })
 
 
 app.on('ready', initApp)

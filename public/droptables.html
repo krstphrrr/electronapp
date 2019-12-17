@@ -1,0 +1,34 @@
+
+<html>
+  <!-- <script src="../scripts/invwin.js"> -->
+    <script type="text/javascript">
+      const ipc = require('electron').ipcRenderer
+      const BrowserWindow = require('electron').remote.BrowserWindow
+      let variable = ''
+
+    ipc.on('dostuff', function(event, fromWindowId){
+      const result = drop_tables()
+      const fromWindow = BrowserWindow.fromId(fromWindowId)
+      fromWindow.webContents.send('stuffdone',result)
+      window.close()
+    })
+    function drop_tables(){
+      const {PythonShell} = require('python-shell')
+      const path = require("path")
+
+      const options = {
+          scriptPath: './scripts/',
+          pythonPath: 'C:\\Users\\kbonefont\\AppData\\Local\\Continuum\\miniconda3\\python.exe',
+          args: [variable]
+      }
+      let pyshell = new PythonShell('dropper.py',options)
+
+      pyshell.on('message', (message)=>{
+        return message
+        // document.getElementById('textout2').innerHTML = message
+      })
+    } 
+
+  </script>
+  <h5 id="poptext">k</h5>
+</html>
