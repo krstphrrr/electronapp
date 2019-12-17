@@ -3,18 +3,20 @@ extends layout
 block content
 	//- div#progressBar.mdl-progress.mdl-js-progress.mdl-progress__indeterminate(style="{display:none}")
 	div#main
-		div.mdl-grid
+		div.mdl-grid(style="{height:100%}")
 			div.mdl-cell.mdl-cell--12-col(style="{justify-content:left}")
 				p 1. So which DIMA doyawant?
 			div.mdl-cell.mdl-cell--3-col
 				button#setbtn.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect Choose!			
-			div.mdl-cell.mdl-cell--9-col
+			div.mdl-cell.mdl-cell--4-col(style="{justify-content:left}")
 				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					span#textout
+					span#textout(style="{overflow:hidden;white-space:nowrap}")
 					label.mdl-textfield__label#outlabel(for="textout") 1st Output
+			div.mdl-cell.mdl-cell--12-col
+			div.mdl-cell.mdl-cell--12-col
 			div.mdl-cell.mdl-cell--3-col
 				button#popbtn.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect drop tables
-			div.mdl-cell.mdl-cell--9-col
+			div.mdl-cell.mdl-cell--4-col
 				div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 					span#textout2
 					label.mdl-textfield__label#outlabel2(for="textout2") 2nd Output

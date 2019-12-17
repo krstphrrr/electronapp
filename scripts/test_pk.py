@@ -161,7 +161,7 @@ class arcno():
         self.newfield = newfield
         self.fields = fields
 
-        self.in_df[f'{self.newfield}'] = (self.in_df[[f'{field}' for field in self.fields]].astype('object')).sum(axis=1)
+        self.in_df[f'{self.newfield}'] = (self.in_df[[f'{field}' for field in self.fields]].astype('str_')).sum(axis=1)
         return self.in_df
 
 
@@ -192,12 +192,21 @@ class arcno():
         self.isolates =self.in_df[[f'{field}' for field in self.fields]]
         return self.isolates
 
-
     def GetParameterAsText(self,string):
         """ return stringified element
         """
         self.string = f'{string}'
         return self.string
+
+
+# arc = arcno()
+#
+# df1 = pd.DataFrame({
+# "a":["one",2],
+# "b":[3,"four"]
+# })
+#
+# df1['newcol']=(df1[[f'{field}' for field in df1.columns]].astype('str_')).sum(axis=1)
 
 def lpi_pk(dimapath):
     # tables

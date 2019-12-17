@@ -20,17 +20,7 @@ const template = [{
        label: `About ${name}`,
         role: 'about'
       }]
-  }, {
-      label: "Edit",
-      submenu: [
-          { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
-          { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
-          { type: "separator" },
-          { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
-          { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
-          { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
-          { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
-      ]}]
+  }]
 
 
 const initApp = async function(){
@@ -45,25 +35,26 @@ const initApp = async function(){
 
 
     let mainWindow = new BrowserWindow({
-        width:860, 
-        height:275,
-        resizable: true,
+        width:600, 
+        height:350,
+        resizable: false,
+        // frame:false,
         webPreferences:{
             nodeIntegration:true
         }
     })
     mainWindow.loadURL(path.join(path.dirname(__dirname),'/views/index.pug'))
 
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     mainWindow.on('closed', ()=> {
         mainWindow=null
     })
 }
 
-// ipcMain.on('stuffdone',(event, output)=>{
-//     console.log(`${output}`)
-// })
+ipcMain.on('pop',(event, output)=>{
+    console.log(`${output}`)
+})
 
 
 app.on('ready', initApp)

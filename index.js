@@ -7,6 +7,10 @@ const path = require('path')
 const setupPug = require('electron-pug')
 const popbtn = document.getElementById('popbtn')
 const setbtn = document.getElementById('setbtn')
+const txtout1 = document.getElementById('textout')
+const txtout2 = document.getElementById('textout2')
+const lbl1 = document.getElementById('outlabel')
+const lbl2 = document.getElementById('outlabel2')
 const pypath = process.env.pyPATH
 
 // button that opens dialog and chooses dima file
@@ -15,14 +19,14 @@ let variable = ''
 setbtn.addEventListener('click', (event)=>{
     // ipcRenderer.send("processenv")
  
-    document.getElementById('textout2').innerHTML=''
+    txtout2.innerHTML=''
     variable = dialog.showOpenDialogSync({properties: ['openFile']})
-    document.getElementById('textout').innerHTML = variable
+    txtout1.innerHTML = variable
 
     if (variable===undefined){
-        document.getElementById('outlabel').style.display = "none";
-        document.getElementById('outlabel2').style.display = "none";
-        document.getElementById('textout2').innerHTML= 'no file chosen'
+        lbl1.style.display = "none";
+        lbl2.style.display = "none";
+        txtout2.innerHTML= 'no file chosen'
         
     } else {
         get_dimapath();
@@ -42,11 +46,11 @@ function get_dimapath(){
     let pyshell = new PythonShell('test_pk.py',options)
 
     pyshell.on('message', (message)=>{
-        document.getElementById('textout2').innerHTML = message
+        txtout2.innerHTML = message
     }) 
 
-    document.getElementById('outlabel').style.display = "none";
-    document.getElementById('outlabel2').style.display = "none";
+    lbl1.style.display = "none";
+    lbl2.style.display = "none";
 
 }
 
@@ -66,7 +70,7 @@ popbtn.addEventListener('click', (event)=>{
         }
     })
     win.loadURL(invisPath)
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     win.webContents.on('did-finish-load', ()=>{
         win.webContents.send('dostuff', windowID)
@@ -74,9 +78,10 @@ popbtn.addEventListener('click', (event)=>{
 
 })
 
-ipcRenderer.on('stuffdone',(event,output)=>{
-    const res = `${output}`
-    document.getElementById('outlabel').style.display = "none";
-    document.getElementById('outlabel2').style.display = "none";
-    document.getElementById('textout2').innerHTML = "tables dropped"
+ipcRenderer.on('stuffdone',(event)=>{
+    // const res = `${output}`
+    lbl1.style.display = "none";
+    lbl2.style.display = "none";
+    txtout1.innerHTML = ""
+    txtout2.innerHTML = "tables dropped"
 })

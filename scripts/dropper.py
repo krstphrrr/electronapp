@@ -75,7 +75,7 @@ class db:
     params = config()
     # str = connect(**params)
     tmpconstr = SimpleConnectionPool(minconn=1,maxconn=5,**params)
-    str= tmpconstr.getconn()
+    strn = tmpconstr.getconn()
 
     def __init__(self):
         params = config()
@@ -83,8 +83,8 @@ class db:
         self._cur= self._conn.cursor()
 
 def drop_one(table):
-    con = db.str
-    cur = db.str.cursor()
+    con = db.strn
+    cur = db.strn.cursor()
     try:
         cur.execute(
         sql.SQL('DROP TABLE IF EXISTS postgres.public.{0}').format(
@@ -101,7 +101,7 @@ try:
         drop_one(table)
     for table in newtables:
         drop_one(table)
-    print("dropped tables in postgres")
+    print("tables drpd")
 except Exception as e:
     print(e)
-# print(str)
+
