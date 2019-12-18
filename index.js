@@ -5,28 +5,28 @@ const {ipcRenderer} = require('electron')
 const {app, BrowserWindow} = require('electron').remote
 const path = require('path')
 const setupPug = require('electron-pug')
-// const popbtn = document.getElementById('popbtn')
-// const setbtn = document.getElementById('setbtn')
-// const txtout1 = document.getElementById('textout')
-// const txtout2 = document.getElementById('textout2')
-// const lbl1 = document.getElementById('outlabel')
-// const lbl2 = document.getElementById('outlabel2')
+const popbtn = document.getElementById('popbtn')
+const setbtn = document.getElementById('setbtn')
+const txtout1 = document.getElementById('textout')
+const txtout2 = document.getElementById('textout2')
+const lbl1 = document.getElementById('outlabel')
+const lbl2 = document.getElementById('outlabel2')
 const pypath = process.env.pyPATH
 
 // button that opens dialog and chooses dima file
 let variable = ''
 
-$('#setbtn').on('click', (event)=>{
+setbtn.addEventListener('click', (event)=>{
     // ipcRenderer.send("processenv")
  
-    $('#textout2').innerHTML=''
+    txtout2.innerHTML = ''
     variable = dialog.showOpenDialogSync({properties: ['openFile']})
-    $('#textout').innerHTML = variable
+    txtout1.innerHTML = variable
 
     if (variable===undefined){
-        $('#outlabel').css('display','none');
-        $('#outlabel2').css('display','none');
-        $('#textout2').html('no file chosen')
+        lbl1.style.display = 'none';
+        lbl2.style.display = 'none';
+        txtout2.innerHTML = 'no file chosen'
         
     } else {
         get_dimapath();
@@ -46,7 +46,7 @@ function get_dimapath(){
     let pyshell = new PythonShell('test_pk.py',options)
 
     pyshell.on('message', (message)=>{
-       $('textout2').html(message)
+       txtout2.innerHTML = message
     })
     // pyshell.end(function (err) {
     //     if (err) {
@@ -58,15 +58,15 @@ function get_dimapath(){
     // GET THE KILL PROCESS AFTER THE FUNCTION IS EXECUTED
     // but not within the function
 
-    $('outlabel').css('display','none')
-    $('outlabel2').css('display','none')
+    lbl1.style.display = 'none'
+    lbl2.style.display = 'none'
 
 }
 
 
 // button that drops all tables
 // process should happen in invisible window
-$('#popbtn').on('click', (event)=>{
+popbtn.addEventListener('click', (event)=>{
 
     const windowID = BrowserWindow.getFocusedWindow().id
     const invisPath = path.join(path.dirname(__dirname),'/public/droptables.html')
@@ -89,8 +89,8 @@ $('#popbtn').on('click', (event)=>{
 
 ipcRenderer.on('stuffdone',(event)=>{
     // const res = `${output}`
-    $('outlabel').css("display", "none")
-    $('outlabel2').css("display", "none")
-    $('textout').html("")
-    $('textout2').html("tables dropped")
+    lbl1.style.display = "none";
+    lbl2.style.display = "none";
+    txtout.innerHTML = ""
+    txtout2.innerHTML = "tables dropped"
 })
