@@ -23,9 +23,17 @@
       let pyshell = new PythonShell('dropper.py',options)
 
       pyshell.on('message', (message)=>{
-        ipc.send('pop',message)
+        ipc.send('pop', message)
       })
-    } 
+    //   pyshell.end(function (err) {
+    //     if (err) {
+    //       ipc.send('pop', err);
+    //     }
+    // });
+    //   python_process = pyshell.childProcess;
+    //   python_process.kill('SIGINT');
+
+    // } 
 
   </script>
   <h5 id="poptext">k</h5>

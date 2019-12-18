@@ -7,7 +7,12 @@ html
 		link(rel="stylesheet", href="../views/mdl/material.min.css")
 		script(src ="../views/mdl/material.min.js")
 		script(src = "../scripts/getstr.js")
+		script.
+			window.$ = window.jQuery = require('jquery');
+			require('../views/mdl/jquery-ui.min.js')
 	body
 		block content
 	script(src="../index.js")
+	
+	//- script(src="../jquery-ui.min.js")
 	
